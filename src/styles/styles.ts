@@ -4,15 +4,21 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     tela: {
         flex: 1, 
-       // backgroundColor: '#00FFFF' 
+       backgroundColor: '#e6eeff' 
     },
     tituloTela: {
       fontSize: 35, 
       textAlign: 'center',
       color: 'black' 
     },
+
+    margem: {
+        marginTop: 20
+    },
+
     titulo1: {
-        fontSize: 40,
+        marginTop: 40,
+        fontSize: 30,
         fontWeight: 'bold',
         color: 'black'
     },
@@ -49,6 +55,8 @@ const styles = StyleSheet.create({
       color: 'black'
     },
     caixa_texto: {
+        width: '80%',
+        height: 50,
         color: 'black',
         fontSize: 20,
         borderWidth: 1,
@@ -62,8 +70,9 @@ const styles = StyleSheet.create({
     },
 
     imagem_200: {
-        width: 200,
-        height: 200
+        alignItems: 'center',
+        width: 100,
+        height: 100
     },
 
     card:{
@@ -79,7 +88,14 @@ const styles = StyleSheet.create({
     },
     centralizar: {
       alignItems: 'center'
-    }
+    },
+    
+    botoes: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 20,
+        width: '80%'
+    },
 });
 
 export {styles};

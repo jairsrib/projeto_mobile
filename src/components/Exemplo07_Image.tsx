@@ -7,12 +7,8 @@ const Exemplo07_Image = () => {
     return (
         <View>
             <Image
-                source={require('../images/icon_app.png')} //arquivo local      
-                style={styles.imagem_200}/>       
-
-            <Image
-                source={{uri: url}} //arquivo na web
-                style={styles.imagem_200}/>    
+                source={require('../images/cliente.png')} //arquivo local      
+                style={styles.imagem_200}/>
         </View>
     );
 }
