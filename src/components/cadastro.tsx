@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Pressable, StyleSheet, Switch, Text, TextInput, View } from 'react-native';
+import { Alert, Pressable, StyleSheet, Switch, Text, TextInput, View } from 'react-native';
 import { PrincipalProps } from '../navigation/HomeNavigator';
 import { styles } from '../styles/styles';
 import Exemplo01 from './Exemplo01';
@@ -12,8 +12,35 @@ import Exemplo07_Image from './Exemplo07_Image';
 //PrincipalProps 
 //como parametro e constrói uma View com o componente 
 //HelloWorld e Exemplo1 dentro
-const TelaPrincipal = (props: PrincipalProps) => {
-  const [ativado, setAtivado] = useState(false);
+
+type StateProps={
+  onClick: (texto: string) => void;
+}
+const Cadastro = () => {
+  const [ativado, setAtivado] = useState('Não');    
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [telefone, setTelefone] = useState('');
+
+  let nomeVariavel = '' as string;
+  let emailVariavel = '' as string;
+
+  function exibirMensagem() {
+      Alert.alert(
+        'Valores',
+        'Nome:' + nome +
+        '\nE-mail:' + email +
+        '\nTelefone:' + telefone +
+        '\nComorbidade:' + ativado 
+      )
+    }
+    function limparCampos() {
+      setNome('');
+      setEmail('');
+      setTelefone('');
+      setAtivado('Não');
+    }
+
 
   return (
     <View
@@ -21,22 +48,40 @@ const TelaPrincipal = (props: PrincipalProps) => {
       <Exemplo07_Image />
       {/* <Exemplo1/> */}
       <Text style={styles.titulo1}>Nome</Text>
-      <TextInput defaultValue='Digite seu nome' style={styles.caixa_texto} />
+      <TextInput value ={nome}
+      onChangeText={(text) => { setNome(text)}}
+      style ={[styles.caixa_texto, styles.largura_70, styles.centralizar]}
+      placeholder='Nome'
+       />
       <Text style={[styles.titulo2, styles.margem]}>E-mail</Text>
-      <TextInput defaultValue='Digite seu e-mail' style={styles.caixa_texto}  />
+      <TextInput 
+      value ={email}
+      onChangeText={(text) => { setEmail(text)}}
+      style ={[styles.caixa_texto, styles.largura_70, styles.centralizar]}
+      placeholder='E-mail'
+       />
       <Text style={[styles.titulo2, styles.margem]}>Telefone</Text>
-      <TextInput defaultValue='Digite seu telefone' style={styles.caixa_texto} />
+      <TextInput 
+      value ={telefone}
+      onChangeText={(text) => { setTelefone(text)}}
+      style ={[styles.caixa_texto, styles.largura_70, styles.centralizar]}
+      placeholder='Telefone'
+      
+          />
       <Text style={[styles.titulo2, styles.margem]}>Possui comorbidade?</Text>
       <Switch
-        value={ativado} //valor
-        onValueChange={(value) => { setAtivado(value) }} //evento
+        value={ativado === 'Sim'} //valor
+        onValueChange={(value) => { setAtivado(value ? 'Sim' : 'Não') }} //evento
       />
       <View style={styles.botoes}> 
-      <Pressable style={styles.botao_vermelho}>
+      <Pressable style={styles.botao_vermelho}
+        onPress={() => {limparCampos() }}>
           <Text style={styles.texto_botao}>Cancelar</Text>
         </Pressable>
-        <Pressable style={styles.botao}>
+        <Pressable style={styles.botao}
+        onPress={() => {exibirMensagem() }}>
         <Text style={styles.texto_botao}>Cadastrar</Text>
+        
       </Pressable>
       </View>
       </View>
@@ -46,4 +91,4 @@ const TelaPrincipal = (props: PrincipalProps) => {
 
 
 //exportando o componente TelaPrincipal para ficar visível para outros arquivos
-export default TelaPrincipal;
+export default Cadastro;
