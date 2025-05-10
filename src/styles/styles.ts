@@ -3,17 +3,36 @@ import { StyleSheet } from "react-native";
 //o StyleSheet é a folha de estilo, equivalente ao css
 const styles = StyleSheet.create({
     tela: {
-        flex: 1, 
-       backgroundColor: '#e6eeff' 
+        flex: 1,
+        backgroundColor: '#e6eeff'
     },
     tituloTela: {
-      fontSize: 35, 
-      textAlign: 'center',
-      color: 'black' 
+        fontSize: 35,
+        textAlign: 'center',
+        color: 'black'
     },
 
     margem: {
-        marginTop: 20
+        marginTop: 50
+    },
+
+    item: {
+        padding: 10,
+        fontSize: 20,
+        color: 'black',
+        borderWidth: 2,
+        borderColor: 'black',
+        borderRadius: 10,
+        margin: 5
+    },
+    item2: {
+        padding: 10,
+        fontSize: 35,
+        color: 'green',
+        borderWidth: 2,
+        borderColor: 'blue',
+        borderRadius: 10,
+        margin: 5
     },
 
     titulo1: {
@@ -29,7 +48,7 @@ const styles = StyleSheet.create({
     },
     botao: {
         justifyContent: 'center',
-        alignItems:'center',
+        alignItems: 'center',
         width: 'auto',
         backgroundColor: 'green',
         paddingVertical: 10,
@@ -38,21 +57,21 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
     botao_vermelho: {
-      justifyContent: 'center',
-      alignItems:'center',
-      backgroundColor: 'red',
-      paddingVertical: 10,
-      paddingHorizontal: 30,
-      marginTop: 20,
-      borderRadius: 10
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'red',
+        paddingVertical: 10,
+        paddingHorizontal: 30,
+        marginTop: 20,
+        borderRadius: 10
     },
     texto_botao: {
         fontSize: 20,
         color: 'white'
     },
     titulo_campos: {
-      fontSize: 20,
-      color: 'black'
+        fontSize: 20,
+        color: 'black'
     },
     caixa_texto: {
         width: '80%',
@@ -75,7 +94,7 @@ const styles = StyleSheet.create({
         height: 100
     },
 
-    card:{
+    card: {
         borderWidth: 2,
         borderColor: 'black',
         borderRadius: 15,
@@ -87,9 +106,9 @@ const styles = StyleSheet.create({
         opacity: 0.5
     },
     centralizar: {
-      alignItems: 'center'
+        alignItems: 'center'
     },
-    
+
     botoes: {
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -98,4 +117,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export {styles};
+export { styles };

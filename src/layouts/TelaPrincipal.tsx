@@ -11,6 +11,7 @@ import Notas from '../components/Notas';
 import Cadastro from '../components/Cadastro';
 import CampoDeTexto from '../components/CampoDeTexto';
 import Notas2 from '../components/Notas2';
+import Lista from '../components/Lista';
 
 //Componente chamado TelaPrincipal que recebe 
 //PrincipalProps 
@@ -21,7 +22,7 @@ const TelaPrincipal = (props: PrincipalProps) => {
   
   return (
     <View style={[styles.tela, styles.centralizar]}>
-      <Notas2 nome = "jair" nota1 ={10} nota2={5}  />
+      <Lista listaPessoas={["artur", "pedro", "julia"]}  />
 
 </View>
   );
