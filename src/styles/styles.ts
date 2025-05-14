@@ -12,8 +12,16 @@ const styles = StyleSheet.create({
         color: 'black'
     },
 
-    margem: {
-        marginTop: 50
+    margemTop: {
+        marginTop: 20
+    },
+
+    margemBot:{
+        marginBottom: 20
+    },
+
+    margemLeft:{
+        marginLeft: 10
     },
 
     item: {

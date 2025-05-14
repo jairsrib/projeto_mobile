@@ -14,27 +14,18 @@ const Notas2 = (props: NotaProps) => {
     function calcularMedia() {
         return (props.nota1 + props.nota2) / 2;
     }
-    function verificarAprovacao() {
-        if (calcularMedia() >= 7) {
-            return 'Aprovado';
-        } else if (calcularMedia() >= 5) {
-            return 'Recuperação';
-        } else {
-            return 'Reprovado';
-        }
-    }
 
     return (
         <View style={styles.tela}>
-            <Text style={[styles.titulo1, styles.margem]}>Notas</Text>
-            <Text style={[styles.titulo2, styles.margem]}>Nome: {props.nome}</Text>
-            <Text style={[styles.titulo2, styles.margem]}>Nota 1: {props.nota1}</Text>
-            <Text style={[styles.titulo2, styles.margem]}>Noaaa 2: {props.nota2}</Text>
-            <Text style={[styles.titulo2, styles.margem]}>Média: {calcularMedia()}</Text>
+            <Text style={[styles.titulo1, styles.margemTop]}>Notas</Text>
+            <Text style={[styles.titulo2, styles.margemTop]}>Nome: {props.nome}</Text>
+            <Text style={[styles.titulo2, styles.margemTop]}>Nota 1: {props.nota1}</Text>
+            <Text style={[styles.titulo2, styles.margemTop]}>Nota 2: {props.nota2}</Text>
+            <Text style={[styles.titulo2, styles.margemTop]}>Média: {calcularMedia()}</Text>
             {
             calcularMedia() >= 7 ?
-                <Text style={[styles.titulo2, styles.margem]}>Situação: Aprovado</Text>
-: <Text style={[styles.titulo2, styles.margem]}>Situação: Reprovado</Text>
+                <Text style={[styles.titulo2, styles.margemTop]}>Situação: Aprovado</Text>
+: <Text style={[styles.titulo2, styles.margemTop]}>Situação: Reprovado</Text>
             }
             </View>
     );

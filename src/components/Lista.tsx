@@ -27,9 +27,9 @@ const Lista = (props: ListaProps) => {
     
 
     return (
-        <View style={[styles.tela, styles.margem]}>
+        <View style={[styles.tela, styles.margemTop, styles.centralizar]}>
             <TextInput
-                style={styles.caixa_texto}
+                style={[styles.caixa_texto, styles.margemTop]}
                 value={pessoa}
                 onChangeText={setPessoa}
                 placeholder="Digite o nome"

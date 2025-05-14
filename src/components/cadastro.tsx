@@ -53,14 +53,14 @@ const Cadastro = () => {
       style ={[styles.caixa_texto, styles.largura_70, styles.centralizar]}
       placeholder='Nome'
        />
-      <Text style={[styles.titulo2, styles.margem]}>E-mail</Text>
+      <Text style={[styles.titulo2, styles.margemTop]}>E-mail</Text>
       <TextInput 
       value ={email}
       onChangeText={(text) => { setEmail(text)}}
       style ={[styles.caixa_texto, styles.largura_70, styles.centralizar]}
       placeholder='E-mail'
        />
-      <Text style={[styles.titulo2, styles.margem]}>Telefone</Text>
+      <Text style={[styles.titulo2, styles.margemTop]}>Telefone</Text>
       <TextInput 
       value ={telefone}
       onChangeText={(text) => { setTelefone(text)}}
@@ -68,7 +68,7 @@ const Cadastro = () => {
       placeholder='Telefone'
       
           />
-      <Text style={[styles.titulo2, styles.margem]}>Possui comorbidade?</Text>
+      <Text style={[styles.titulo2, styles.margemTop]}>Possui comorbidade?</Text>
       <Switch
         value={ativado === 'Sim'} //valor
         onValueChange={(value) => { setAtivado(value ? 'Sim' : 'Não') }} //evento
