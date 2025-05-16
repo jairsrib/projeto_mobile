@@ -11,7 +11,7 @@ const TelaNotas = (props: Notasprops) => {
         return (props.route.params.nota1 + props.route.params.nota2) / 2;
     }
     return (
-        <><View style={[styles.tela, stylesLocal.centralizar]}>
+        <><View style={[styles.tela, styles.centralizar]}>
             <Text style={styles.titulo1}>Notas</Text>
             <Text style={styles.titulo2}>Nomes: {props.route.params.nome}</Text>
             <Text style={styles.titulo2}>Nota 1: {props.route.params.nota1}</Text>
@@ -25,7 +25,7 @@ const TelaNotas = (props: Notasprops) => {
         </View>
         <View>
                 <Pressable onPress={() => { props.navigation.goBack(); } }>
-                    <Text style={[stylesLocal.botaoNav]}>Voltar</Text>
+                    <Text style={[styles.botaoNav]}>Voltar</Text>
                 </Pressable>
             </View></>
         
@@ -34,23 +34,3 @@ const TelaNotas = (props: Notasprops) => {
 
 export default TelaNotas;
 
-const stylesLocal = StyleSheet.create({
-    centralizar: {
-        textAlign: 'center',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    botaoNav: {
-        color: "white",
-        justifyContent: 'center',
-        alignItems:'center',
-        width: 'auto',
-        backgroundColor: 'green',
-        paddingVertical: 10,
-        paddingHorizontal: 30,
-        marginTop: 20,
-        borderRadius: 10,
-        textAlign: 'center'
-    }
-
-});

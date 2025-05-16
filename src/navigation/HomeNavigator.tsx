@@ -2,15 +2,17 @@ import { NativeStackScreenProps, createNativeStackNavigator } from "@react-navig
 import TelaPrincipal from "../layouts/TelaPrincipal";
 import TelaNotas from "../layouts/TelaNotas";
 import TelaLista from "../layouts/TelaLista";
-import TelaExercicio5 from "../layouts/TelaCampoDeTexto";
+import TelaCadCliente from "../layouts/TelaCadCliente";
 import TelaCampoDeTexto from "../layouts/TelaCampoDeTexto";
-
+import TelaConsProduto from "../layouts/TelaConsCliente";
 //Define quais as telas e os parâmetros de cada tela
 type RootStackParamList = {
   TelaPrincipal: undefined; 
   TelaNotas:{nota1 : number, nota2: number, nome : string};
   TelaCampoDeTexto: {onClick:(text: string) => void};
   TelaLista:{listapessoas : string[]};
+  TelaCadCliente: undefined;
+  TelaConsProduto: undefined;
 
 };
 
@@ -28,10 +30,11 @@ const HomeNavigator = () => {
 
       {/* define uma te la dando um nome(igual ao RootStackParamList) e qual o componente será carregado */}
       <Stack.Screen name="TelaPrincipal" component={TelaPrincipal} />
-
-      <Stack.Screen name="TelaNotas" component={TelaNotas} />
       <Stack.Screen name="TelaCampoDeTexto" component={TelaCampoDeTexto} />
+      <Stack.Screen name="TelaNotas" component={TelaNotas} />
       <Stack.Screen name="TelaLista" component={TelaLista} />
+      <Stack.Screen name="TelaCadCliente" component={TelaCadCliente} />
+      <Stack.Screen name="TelaConsProduto" component={TelaConsProduto} />
 
     </Stack.Navigator>
   );
@@ -42,17 +45,20 @@ const HomeNavigator = () => {
 type PrincipalProps = NativeStackScreenProps<RootStackParamList,
   'TelaPrincipal'>;
 
-  
-
    type Notasprops = NativeStackScreenProps<RootStackParamList,
   'TelaNotas'>;
 
-   type Exe5props = NativeStackScreenProps<RootStackParamList,
+   type CampoDeTextoprops = NativeStackScreenProps<RootStackParamList,
   'TelaCampoDeTexto'>;
 
   type Listaprops = NativeStackScreenProps<RootStackParamList,
   'TelaLista'>;
 
+   type CadClienteProps = NativeStackScreenProps<RootStackParamList,
+  'TelaCadCliente'>;
+
+  type ConsProdutoProps = NativeStackScreenProps<RootStackParamList,
+  'TelaConsProduto'>;
 
 //exporta o navegador da pilha para ficar visível para outros arquivos    
 export default HomeNavigator;
@@ -61,6 +67,8 @@ export default HomeNavigator;
 export type {
   PrincipalProps,
   Notasprops,
-  Exe5props,
-  Listaprops
+  CampoDeTextoprops,
+  Listaprops,
+  CadClienteProps,
+  ConsProdutoProps
 };

@@ -16,42 +16,38 @@ import Lista from '../components/Lista';
 const TelaPrincipal = (props: PrincipalProps) => {
 
     return (
-        <View style = { [styles.tela, styles.centralizar]} >
-        <Text style={styles.titulo1}>Tela Principal</Text>
+        <View style={[styles.tela, styles.centralizar]} >
+            <Text style={styles.titulo1}>Tela Principal</Text>
 
-        <Pressable onPress={() => { props.navigation.navigate('TelaNotas', {nota1: 10, nota2: 8, nome: 'Leonardo' }) }}>
-            <Text style={styleLocal.botaoNav}>Tela Notas</Text>
-        </Pressable>
+            <Pressable onPress={() => { props.navigation.navigate('TelaNotas', { nota1: 10, nota2: 10, nome: 'Jair' }) }}>
+                <Text style={styles.botaoNav}>Tela Notas</Text>
+            </Pressable>
 
-        <Pressable onPress={() => { props.navigation.navigate('TelaLista', {listapessoas: ['Leonardo'] }) }}>
-            <Text style={styleLocal.botaoNav}>Tela Lista</Text>
-        </Pressable>
+            <Pressable onPress={() => { props.navigation.navigate('TelaLista', { listapessoas: ['Jair'] }) }}>
+                <Text style={styles.botaoNav}>Tela Lista</Text>
+            </Pressable>
 
-        <Pressable onPress={() => { 
-            const text = "Default Alert Text"; 
-            props.navigation.navigate('TelaCampoDeTexto', {onClick: (text) => Alert.alert(text)}) 
-        }}>
-            <Text style={styleLocal.botaoNav}>Tela Exercicio 5</Text>
-        </Pressable>
-    </View >
-  );
+            <Pressable onPress={() => {
+                const text = "Default Alert Text";
+                props.navigation.navigate('TelaCampoDeTexto', { onClick: (text) => Alert.alert(text) })
+            }}>
+                <Text style={styles.botaoNav}>Tela Campo de Texto</Text>
+            </Pressable>
+            <Pressable onPress={() => { props.navigation.navigate('TelaCadCliente') }}>
+                <Text style={styles.botaoNav}>Tela Cadastro Cliente</Text>
+            </Pressable>
+
+            <Pressable onPress={() => { props.navigation.navigate('TelaConsProduto') }}>
+                <Text style={styles.botaoNav}>Tela Consulta Produto</Text>  
+            </Pressable>
+
+            
+        </View >
+    );
 }
 
 
 //exportando o componente TelaPrincipal para ficar visível para outros arquivos
 export default TelaPrincipal;
 
-const styleLocal = StyleSheet.create({
-    botaoNav: {
-        color: "white",
-        justifyContent: 'center',
-        alignItems:'center',
-        width: 'auto',
-        backgroundColor: 'green',
-        paddingVertical: 20,
-        paddingHorizontal: 90,
-        marginTop: 20,
-        borderRadius: 10,
-        textAlign: 'center'
-    }
-});
+

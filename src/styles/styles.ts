@@ -16,11 +16,15 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
 
-    margemBot:{
+    bigMargemTop: {
+        marginTop: 200
+    },
+
+    margemBot: {
         marginBottom: 20
     },
 
-    margemLeft:{
+    margemLeft: {
         marginLeft: 10
     },
 
@@ -91,6 +95,18 @@ const styles = StyleSheet.create({
         margin: 3,
         backgroundColor: 'white',
     },
+    botaoNav: {
+        color: "white",
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 'auto',
+        backgroundColor: 'green',
+        paddingVertical: 10,
+        paddingHorizontal: 30,
+        marginTop: 20,
+        borderRadius: 10,
+        textAlign: 'center'
+    },
 
     largura_70: {
         width: '70%'
@@ -123,6 +139,24 @@ const styles = StyleSheet.create({
         marginTop: 20,
         width: '80%'
     },
+
+    botao_deletar: {
+        backgroundColor: 'red',
+        width: 40,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    botao_alterar: {
+        backgroundColor: 'yellow',
+        width: 40,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    texto_botao_card: {
+        fontWeight: "bold",
+        fontSize: 40,
+        color: 'black'
+    }
 });
 
 export { styles };

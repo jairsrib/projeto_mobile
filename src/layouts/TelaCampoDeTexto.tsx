@@ -1,18 +1,17 @@
 // Removed duplicate import of Text
 import { styles } from "../styles/styles";
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
-import { Exe5props, Notasprops } from "../navigation/HomeNavigator";
+import { CampoDeTextoprops, Notasprops } from "../navigation/HomeNavigator";
 import { useState } from "react";
 
 
-
-const TelaCampoDeTexto = (props: Exe5props) => {
+const TelaCampoDeTexto = (props: CampoDeTextoprops ) => {
     const [text, setText] = useState(''); // Estado para armazenar o texto do campo de entrada
 
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <TextInput
-                style={{ height: 40, borderColor: 'gray', borderWidth: 1, width: '80%', paddingHorizontal: 10 }}
+                style={[ styles.caixa_texto, styles.centralizar, styles.margemTop, styles.margemBot]}
                 placeholder="Digite algo"
                 value={text}
                 onChangeText={setText} // Atualiza o estado com o texto digitado
@@ -24,7 +23,7 @@ const TelaCampoDeTexto = (props: Exe5props) => {
                 <Text style={{ color: '#FFFFFF' }}>Clique</Text>
             </Pressable>
              <Pressable onPress={() => { props.navigation.goBack(); } }>
-                    <Text style={[stylesLocal.botaoNav]}>Voltar</Text>
+                    <Text style={[styles.botaoNav]}>Voltar</Text>
                 </Pressable>
         </View>
     );
@@ -32,24 +31,3 @@ const TelaCampoDeTexto = (props: Exe5props) => {
 
 export default TelaCampoDeTexto;
 
-
-const stylesLocal = StyleSheet.create({
-    centralizar: {
-        textAlign: 'center',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    botaoNav: {
-        color: "white",
-        justifyContent: 'center',
-        alignItems:'center',
-        width: 'auto',
-        backgroundColor: 'green',
-        paddingVertical: 10,
-        paddingHorizontal: 30,
-        marginTop: 20,
-        borderRadius: 10,
-        textAlign: 'center'
-    }
-
-});
