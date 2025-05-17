@@ -100,12 +100,12 @@ const TelaCadCliente = (props: CadClienteProps) => {
                 <Pressable
                     style={stylesLocal.botaoCancelar}
                     onPress={() => props.navigation.goBack()}>
-                    <Text style={[styles.titulo2, stylesLocal.textoCadastCanc]}>Voltar</Text>
+                    <Text style={[styles.titulo2, styles.botao_vermelho]}>Voltar</Text>
                 </Pressable>
                 <Pressable
                     style={stylesLocal.botaoCadastrar}
                     onPress={() => {cadastrar()}}>
-                    <Text style={[styles.titulo2, , stylesLocal.textoCadastCanc]}>Cadastro</Text>
+                    <Text style={[styles.titulo2, , styles.botaoVerde]}>Cadastro</Text>
                 </Pressable>
                 
             </View>

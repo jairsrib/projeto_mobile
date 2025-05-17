@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Alert, Pressable, FlatList, StyleSheet, Text, View } from "react-native";
 import firestore from "@react-native-firebase/firestore";
-import { ConsProdutoProps } from "../navigation/HomeNavigator";
+import { ConsClienteProps } from "../navigation/HomeNavigator";
 import { Cliente } from "../types/Cliente";
 import { styles } from "../styles/styles";
 
-const TelaConsProduto = (props: ConsProdutoProps) => {
+const TelaConsCliente = (props: ConsClienteProps) => {
   //cria a lista de produtos 
   const [produtos, setProdutos] = useState<Cliente[]>([]);
 
@@ -36,7 +36,7 @@ const TelaConsProduto = (props: ConsProdutoProps) => {
     return () => subscribe();
   }, []);
 
-  function deletarProduto(id: string) {
+  function deletarCliente(id: string) {
     firestore()
       .collection('produtos')
       .doc(id)
@@ -61,7 +61,7 @@ const TelaConsProduto = (props: ConsProdutoProps) => {
           <ItemProduto
             numeroOrdem={info.index + 1}
             prod={info.item}
-            onDeletar={deletarProduto}
+            onDeletar={deletarCliente}
             onAlterar={alterarNota} />} />
 
 
@@ -130,7 +130,7 @@ const ItemProduto = (props: ItemProdutoProps) => {
   );
 }
 
-export default TelaConsProduto;
+export default TelaConsCliente;
 
 const styles_local = StyleSheet.create({
   card: {

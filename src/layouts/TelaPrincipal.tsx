@@ -34,14 +34,16 @@ const TelaPrincipal = (props: PrincipalProps) => {
                 <Text style={styles.botaoNav}>Tela Campo de Texto</Text>
             </Pressable>
             <Pressable onPress={() => { props.navigation.navigate('TelaCadCliente') }}>
-                <Text style={styles.botaoNav}>Tela Cadastro Cliente</Text>
+                <Text style={styles.botaoNav}>Cadastro Cliente</Text>
             </Pressable>
 
-            <Pressable onPress={() => { props.navigation.navigate('TelaConsProduto') }}>
-                <Text style={styles.botaoNav}>Tela Consulta Produto</Text>  
+            <Pressable onPress={() => { props.navigation.navigate('TelaConsCliente') }}>
+                <Text style={styles.botaoNav}>Consulta Cliente</Text>
+            </Pressable>
+            <Pressable onPress={() => { props.navigation.navigate('TelaMenu') }}>
+                <Text style={styles.botaoNav}>Menu</Text>
             </Pressable>
 
-            
         </View >
     );
 }

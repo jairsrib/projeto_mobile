@@ -68,14 +68,26 @@ const styles = StyleSheet.create({
         marginTop: 20,
         borderRadius: 10
     },
-    botao_vermelho: {
-        justifyContent: 'center',
+    botaoVerde: {
+        backgroundColor: 'green',
         alignItems: 'center',
+        borderRadius: 5,
+        height: 50,
+        justifyContent: 'center'
+    },
+    tituloRadio: {
+        fontSize: 25,
+        fontWeight: 'bold',
+        color: 'black',
+        textAlign: 'center',
+        marginTop: 25,
+    },
+    botao_vermelho: {
         backgroundColor: 'red',
-        paddingVertical: 10,
-        paddingHorizontal: 30,
-        marginTop: 20,
-        borderRadius: 10
+        alignItems: 'center',
+        borderRadius: 5,
+        height: 50,
+        justifyContent: 'center'
     },
     texto_botao: {
         fontSize: 20,
@@ -118,14 +130,7 @@ const styles = StyleSheet.create({
         height: 100
     },
 
-    card: {
-        borderWidth: 2,
-        borderColor: 'black',
-        borderRadius: 15,
-        marginVertical: 5,
-        marginHorizontal: 5,
-        backgroundColor: 'white'
-    },
+    
     click: {
         opacity: 0.5
     },
@@ -135,9 +140,8 @@ const styles = StyleSheet.create({
 
     botoes: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginTop: 20,
-        width: '80%'
+        justifyContent: 'space-around',
+        flex: 1,
     },
 
     botao_deletar: {
@@ -145,6 +149,9 @@ const styles = StyleSheet.create({
         width: 40,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    fundo: {
+        backgroundColor: '#D3D3D3',
     },
     botao_alterar: {
         backgroundColor: 'yellow',
@@ -156,7 +163,24 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 40,
         color: 'black'
-    }
+    },
+    card: {
+    borderWidth: 2,
+    borderColor: 'grey',
+    margin: 5,
+    borderRadius: 10,
+    padding: 3,
+    flexDirection: 'row',
+    backgroundColor: 'white'
+  },
+  dados_card: {
+    flex: 1
+  },
+  botoes_card: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  
 });
 
 export { styles };
