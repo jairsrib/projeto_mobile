@@ -3,31 +3,28 @@ import { View, Text, Image, Switch, TextInput, Pressable, StyleSheet, Alert } fr
 import { styles } from '../styles/styles';
 import { useState } from "react";
 import  firestore  from '@react-native-firebase/firestore';
-import { CadClienteProps } from '../navigation/HomeNavigator';
-import { Cliente } from '../types/Cliente';
+import { CadProdutoProps } from '../navigation/HomeNavigator';
+import { Produto } from '../types/Produto';
 
-const TelaCadCliente = (props: CadClienteProps) => {
+const TelaCadProduto = (props: CadProdutoProps) => {
     const [nome, setNome] = useState('');
-    const [email, setEmail] = useState('');
-    const [telefone, setTelefone] = useState('');
-    const [comorbidade, setAtivado] = useState('nao');
-    const [checked, setChecked] = React.useState('first');
+    const [codigoBarras, setCodigoBarras] = useState('');
+    const [preco, setPreco] = useState('');
 
   function cadastrar() {
     if (verificaCampos()) {
-      let cliente = {
+      let produto = {
           nome: nome,
-          email: email,
-          telefone: telefone,
-          comorbidade: comorbidade
-      } as Cliente;
+          codigoBarras: codigoBarras,
+          preco: Number(preco),
+      } as Produto;
 
 
       firestore()
-        .collection('clientes')
-        .add(cliente)
+        .collection('produtos')
+        .add(produto)
         .then(() => {
-          Alert.alert(" Cliente cadastrado com sucesso!");
+          Alert.alert(" Produto cadastrado com sucesso!");
           props.navigation.goBack();
         })
         .catch((error) => {
@@ -41,12 +38,12 @@ const TelaCadCliente = (props: CadClienteProps) => {
             Alert.alert('Nome em branco! Digite um nome!')
             return false;
         }   
-        if(!email){
-            Alert.alert('Email em branco! Digite o Email!')
+        if(!codigoBarras){
+            Alert.alert('Sem código de barras!')
             return false;
         }   
-        if(!telefone){
-            Alert.alert('Digite um número de telefone!')
+        if(!preco){
+            Alert.alert('Não foi definido valor!')
             return false;
         }  
         return true;      
@@ -55,11 +52,8 @@ const TelaCadCliente = (props: CadClienteProps) => {
     return (
         <View style={styles.tela}>
             <View style={[styles.centralizar, stylesLocal.fundo]}>
-                <Text style={styles.titulo1}>Cadastro de Cliente</Text>
-                <Image
-                    source={require('../images/cliente.png')}
-                    style={[styles.imagem_200, styles.margemTop]}
-                />
+                <Text style={styles.titulo1}>Cadastro de Produtos</Text>
+                
 
                 <Text style={styles.titulo2}>Nome:</Text>
                 <TextInput
@@ -70,57 +64,50 @@ const TelaCadCliente = (props: CadClienteProps) => {
                         setNome(text);
                     }}
                 />
-                <Text style={styles.titulo2}>E-mail:</Text>
+                <Text style={styles.titulo2}>Código de Barras:</Text>
                 <TextInput
-                    value={email}
+                    value={codigoBarras}
                     style={[styles.caixa_texto, styles.largura_70]}
-                    placeholder='E-mail'
+                    placeholder='Código de Barras'
                     onChangeText={(text1) => { 
-                        setEmail(text1);
+                        setCodigoBarras(text1);
                     }}
                 />
-                <Text style={styles.titulo2}>Telefone:</Text>
+                <Text style={styles.titulo2}>Preço:</Text>
                 <TextInput
-                    value={telefone}
+                    value={preco}
                     style={[styles.caixa_texto, styles.largura_70]}
-                    placeholder='Telefone'
+                    placeholder='Preço'
                     onChangeText={(text2) => { 
-                        setTelefone(text2);
+                        setPreco(text2);
                     }}
                 />
-                <Text style={stylesLocal.tituloRadio}>Possui Comorbidades?</Text>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-around', backgroundColor: '#D3D3D3', padding: 20 }}>
-                <Switch 
-                value={comorbidade === 'sim'} 
-                onValueChange={(value)=>{setAtivado(value ? 'sim' : 'nao') }} 
-                />   
-                </View>
+                
             </View>
-            <View style={stylesLocal.botoes}>
-                <Pressable
-                    style={stylesLocal.botaoCadastrar}
-                    onPress={() => {cadastrar()}}>
-                    <Text style={[styles.titulo2, , styles.botaoVerde]}>Cadastro</Text>
-                </Pressable>
+            <View style={[stylesLocal.botoes, styles.margemTop]}>
                 <Pressable
                     style={stylesLocal.botaoCancelar}
                     onPress={() => props.navigation.goBack()}>
-                    <Text style={[styles.titulo2, styles.botao_vermelho]}>Voltar</Text>
+                    <Text style={[styles.titulo2, stylesLocal.textoCadastCanc]}>Voltar</Text>
                 </Pressable>
-                
+                <Pressable
+                    style={stylesLocal.botaoCadastrar}
+                    onPress={() => {cadastrar()}}>
+                    <Text style={[styles.titulo2, , stylesLocal.textoCadastCanc]}>Cadastro</Text>
+                </Pressable>
                 
             </View>
 
         </View>
     );
 }
-export default TelaCadCliente;
+export default TelaCadProduto;
 
 const stylesLocal = StyleSheet.create({
     tituloRadio: {
         fontSize: 25,
         fontWeight: 'bold',
-        color: 'black',
+        color: 'white',
         textAlign: 'center',
         marginTop: 25,
     },
@@ -133,13 +120,13 @@ const stylesLocal = StyleSheet.create({
         textAlign: 'center',
     },
     fundo: {
-        backgroundColor: '#D3D3D3',
+        backgroundColor: '#808080',
     },
     botoes: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-        backgroundColor: '#D3D3D3',
-        flex: 1,
+        backgroundColor: '#808080',
+        //flex: 1,
     },
     botaoCancelar: {
         backgroundColor: 'red',

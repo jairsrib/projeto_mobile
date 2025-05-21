@@ -1,54 +1,46 @@
 import { useState, useEffect } from "react";
 import { Alert, Pressable, FlatList, StyleSheet, Text, View } from "react-native";
+
 import firestore from "@react-native-firebase/firestore";
-import { ConsClienteProps } from "../navigation/HomeNavigator";
-import { Cliente } from "../types/Cliente";
+import { ConsProdutoProps } from "../navigation/HomeNavigator";
+import { Produto } from "../types/Produto";
 import { styles } from "../styles/styles";
 
-const TelaConsCliente = (props: ConsClienteProps) => {
-  //cria a lista de produtos 
-  const [clientes, setClientes] = useState<Cliente[]>([]);
+const TelaConsProduto = (props: ConsProdutoProps) => {
+  const [produtos, setProdutos] = useState<Produto[]>([]);
 
-  //O useEffect executa a função que for passada como parâmetro
   useEffect(() => {
-    //Buscar os dados da tabela de produtos
     const subscribe = firestore()
-      .collection('clientes')
-      .onSnapshot(querySnapshot => { //A cada atualização dos dados no banco de dados é acionado o evento onSnapshot
-        /*
-        Os registros ficam em querySnapshot.docs eles são percorridos usando a função map
-        onde para cada objeto na lista será armazenado o seu valor na variável doc
-        e então executada uma função*/
+      .collection('produtos')
+      .onSnapshot(querySnapshot => { 
+
         const data = querySnapshot.docs.map(doc => {
-          /*Nessa função estão sendo retornados 1 objeto para cada item da lista de produtos
-          cada objeto está sendo guardado na constante data, formando um array [] */
+         
           return {
             id: doc.id,
-            ...doc.data() //doc.data() está sendo decomposto para colocar os campo de produto lado a lado com o id
+            ...doc.data() 
           }
 
-        }) as Cliente[];
+        }) as Produto[];
 
-        //data contém a lista atualizada dos produtos, então é preenchido o state com data para atualizar a FlatList
-        setClientes(data);
+        setProdutos(data);
       });
 
     return () => subscribe();
   }, []);
 
-  function deletarCliente(id: string) {
+  function deletarProduto(id: string) {
     firestore()
-      .collection('clientes')
+      .collection('produtos')
       .doc(id)
       .delete()
       .then(() => {
-        Alert.alert("Cliente", "Removido com sucesso")
+        Alert.alert("Produto", "Removido com sucesso")
       })
       .catch((error) => console.log(error));
   }
 
   function alterarNota(id: string) {
-   // props.navigation.navigate("TelaAltProduto", { id: id })
   }
 
   return (
@@ -56,12 +48,12 @@ const TelaConsCliente = (props: ConsClienteProps) => {
 
       <Text style={styles.tituloTela}>Listagem de Produtos</Text>
       <FlatList
-        data={clientes}
+        data={produtos}
         renderItem={(info) =>
           <ItemProduto
             numeroOrdem={info.index + 1}
             prod={info.item}
-            onDeletar={deletarCliente}
+            onDeletar={deletarProduto}
             onAlterar={alterarNota} />} />
 
 
@@ -79,7 +71,7 @@ const TelaConsCliente = (props: ConsClienteProps) => {
 
 type ItemProdutoProps = {
   numeroOrdem: number;
-  prod: Cliente;
+  prod: Produto;
   onDeletar: (id: string) => void;
   onAlterar: (id: string) => void;
 }
@@ -89,20 +81,14 @@ const ItemProduto = (props: ItemProdutoProps) => {
   return (
     <View style={styles.card}>
       <View style={styles_local.dados_card}>
-        <Text style={{ fontSize: 20 }}>
-          ID: {props.prod.id}
-        </Text>
         <Text style={{ fontSize: 30, color: 'black' }}>
-          {props.prod.nome}
+          {props.numeroOrdem + ' - ' + props.prod.nome}
         </Text>
         <Text style={{ fontSize: 20 }}>
-          E-mail: {props.prod.email}
+          Id:{props.prod.id}
         </Text>
         <Text style={{ fontSize: 20 }}>
-          Telefone: {props.prod.telefone}
-        </Text>
-        <Text style={{ fontSize: 20 }}>
-          Comorbidade: {props.prod.comorbidade}
+          Código de Barras:{props.prod.codigoBarras}
         </Text>
       </View>
 
@@ -130,7 +116,7 @@ const ItemProduto = (props: ItemProdutoProps) => {
   );
 }
 
-export default TelaConsCliente;
+export default TelaConsProduto;
 
 const styles_local = StyleSheet.create({
   card: {

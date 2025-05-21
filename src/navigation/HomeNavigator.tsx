@@ -1,24 +1,30 @@
 import { NativeStackScreenProps, createNativeStackNavigator } from "@react-navigation/native-stack";
 import TelaPrincipal from "../layouts/TelaPrincipal";
-import TelaNotas from "../layouts/TelaNotas";
-import TelaLista from "../layouts/TelaLista";
 import TelaCadCliente from "../layouts/TelaCadCliente";
-import TelaCampoDeTexto from "../layouts/TelaCampoDeTexto";
+import TelaCadFuncionario from "../layouts/TelaCadFuncionario";
+import TelaCadProduto from "../layouts/TelaCadProduto";
+import TelaCadCategoria from "../layouts/TelaCadCategoria";
 import TelaConsCliente from "../layouts/TelaConsCliente";
-import TelaCadPaciente from "../layouts/TelaCadPaciente";
-import TelaMenu from "../layouts/TelaMenu"
-import TelaFila from "../layouts/TelaFila"
+import TelaConsFuncionario from "../layouts/TelaConsFuncionario";
+import TelaConsProduto from "../layouts/TelaConsProduto";
+import TelaConsCategoria from "../layouts/TelaConsCategoria";
+
 //Define quais as telas e os parâmetros de cada tela
 type RootStackParamList = {
   TelaPrincipal: undefined;
   TelaNotas: { nota1: number, nota2: number, nome: string };
   TelaCampoDeTexto: { onClick: (text: string) => void };
   TelaLista: { listapessoas: string[] };
+
   TelaCadCliente: undefined;
+  TelaCadFuncionario: undefined;
+  TelaCadProduto: undefined;
+  TelaCadCategoria: undefined;
+
   TelaConsCliente: undefined;
-  TelaCadPaciente: undefined;
-  TelaMenu: undefined;
-  TelaFila: undefined;
+  TelaConsFuncionario: undefined;
+  TelaConsProduto: undefined;
+  TelaConsCategoria: undefined;
 };
 
 //Cria a Stack (tipo de navegação onde as telas estão em uma "pilha")
@@ -35,15 +41,15 @@ const HomeNavigator = () => {
 
       {/* define uma te la dando um nome(igual ao RootStackParamList) e qual o componente será carregado */}
       <Stack.Screen name="TelaPrincipal" component={TelaPrincipal} />
-      <Stack.Screen name="TelaCampoDeTexto" component={TelaCampoDeTexto} />
-      <Stack.Screen name="TelaNotas" component={TelaNotas} />
-      <Stack.Screen name="TelaLista" component={TelaLista} />
       <Stack.Screen name="TelaCadCliente" component={TelaCadCliente} />
-      <Stack.Screen name="TelaConsCliente" component={TelaConsCliente} />
-      <Stack.Screen name="TelaCadPaciente" component={TelaCadPaciente} />
-      <Stack.Screen name="TelaMenu" component={TelaMenu} />
-      <Stack.Screen name="TelaFila" component={TelaFila} />
+      <Stack.Screen name="TelaCadFuncionario" component={TelaCadFuncionario} />
+      <Stack.Screen name="TelaCadProduto" component={TelaCadProduto} />
+      <Stack.Screen name="TelaCadCategoria" component={TelaCadCategoria} />
 
+      <Stack.Screen name="TelaConsCliente" component={TelaConsCliente} />
+      <Stack.Screen name="TelaConsFuncionario" component={TelaConsFuncionario} />
+      <Stack.Screen name="TelaConsProduto" component={TelaConsProduto} />
+      <Stack.Screen name="TelaConsCategoria" component={TelaConsCategoria} />
     </Stack.Navigator>
   );
 }
@@ -53,41 +59,42 @@ const HomeNavigator = () => {
 type PrincipalProps = NativeStackScreenProps<RootStackParamList,
   'TelaPrincipal'>;
 
-type Notasprops = NativeStackScreenProps<RootStackParamList,
-  'TelaNotas'>;
-
-type CampoDeTextoprops = NativeStackScreenProps<RootStackParamList,
-  'TelaCampoDeTexto'>;
-
-type Listaprops = NativeStackScreenProps<RootStackParamList,
-  'TelaLista'>;
-
 type CadClienteProps = NativeStackScreenProps<RootStackParamList,
   'TelaCadCliente'>;
+
+type CadFuncionarioProps = NativeStackScreenProps<RootStackParamList,
+  'TelaCadFuncionario'>;
+
+type CadProdutoProps = NativeStackScreenProps<RootStackParamList,
+  'TelaCadProduto'>;
+
+type CadCategoriaProps = NativeStackScreenProps<RootStackParamList,
+  'TelaCadCategoria'>;
 
 type ConsClienteProps = NativeStackScreenProps<RootStackParamList,
   'TelaConsCliente'>;
 
-type CadPacienteProps = NativeStackScreenProps<RootStackParamList,
-  'TelaCadPaciente'>;
+type ConsFuncionarioProps = NativeStackScreenProps<RootStackParamList,
+  'TelaConsFuncionario'>;
 
-type MenuProps = NativeStackScreenProps<RootStackParamList,
-  'TelaMenu'>;
+type ConsProdutoProps = NativeStackScreenProps<RootStackParamList,
+  'TelaConsProduto'>;
 
-type FilaProps = NativeStackScreenProps<RootStackParamList,
-  'TelaFila'>;
+type ConsCategoriaProps = NativeStackScreenProps<RootStackParamList,
+  'TelaConsCategoria'>;
+
 //exporta o navegador da pilha para ficar visível para outros arquivos    
 export default HomeNavigator;
 
 //exporta os tipos de dados para ficar visível para outros arquivos
 export type {
   PrincipalProps,
-  Notasprops,
-  CampoDeTextoprops,
-  Listaprops,
   CadClienteProps,
+  CadFuncionarioProps,
+  CadProdutoProps,
+  CadCategoriaProps,
   ConsClienteProps,
-  CadPacienteProps,
-  MenuProps,
-  FilaProps
+  ConsFuncionarioProps,
+  ConsProdutoProps,
+  ConsCategoriaProps
 };

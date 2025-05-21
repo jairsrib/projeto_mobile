@@ -3,31 +3,33 @@ import { View, Text, Image, Switch, TextInput, Pressable, StyleSheet, Alert } fr
 import { styles } from '../styles/styles';
 import { useState } from "react";
 import  firestore  from '@react-native-firebase/firestore';
-import { CadClienteProps } from '../navigation/HomeNavigator';
-import { Cliente } from '../types/Cliente';
+import { CadFuncionarioProps } from '../navigation/HomeNavigator';
+import { Funcionario } from '../types/Funcionario';
 
-const TelaCadCliente = (props: CadClienteProps) => {
+const TelaCadFuncionario = (props: CadFuncionarioProps) => {
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [telefone, setTelefone] = useState('');
-    const [comorbidade, setAtivado] = useState('nao');
-    const [checked, setChecked] = React.useState('first');
+    const [cpf, setCpf] = useState('');
+    const [matricula, setMatricula] = useState('');
+   
 
   function cadastrar() {
     if (verificaCampos()) {
-      let cliente = {
+      let funcionario = {
           nome: nome,
           email: email,
           telefone: telefone,
-          comorbidade: comorbidade
-      } as Cliente;
+          cpf: cpf,
+          matricula: matricula
+      } as Funcionario;
 
 
       firestore()
-        .collection('clientes')
-        .add(cliente)
+        .collection('funcionarios')
+        .add(funcionario)
         .then(() => {
-          Alert.alert(" Cliente cadastrado com sucesso!");
+          Alert.alert("Funcionário cadastrado com sucesso!");
           props.navigation.goBack();
         })
         .catch((error) => {
@@ -49,16 +51,24 @@ const TelaCadCliente = (props: CadClienteProps) => {
             Alert.alert('Digite um número de telefone!')
             return false;
         }  
+        if(!cpf){
+            Alert.alert('Digite um cpf válido!')
+            return false;
+        }  
+         if(!matricula){
+            Alert.alert('Digite um número de matricula!')
+            return false;
+        }  
         return true;      
     }
 
     return (
         <View style={styles.tela}>
-            <View style={[styles.centralizar, stylesLocal.fundo]}>
-                <Text style={styles.titulo1}>Cadastro de Cliente</Text>
+            <View style={[styles.centralizar, stylesLocal.tela1]}>
+                <Text style={styles.titulo1}>Cadastro de Funcionário</Text>
                 <Image
                     source={require('../images/cliente.png')}
-                    style={[styles.imagem_200, styles.margemTop]}
+                    style={styles.imagem_200}
                 />
 
                 <Text style={styles.titulo2}>Nome:</Text>
@@ -88,39 +98,53 @@ const TelaCadCliente = (props: CadClienteProps) => {
                         setTelefone(text2);
                     }}
                 />
-                <Text style={stylesLocal.tituloRadio}>Possui Comorbidades?</Text>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-around', backgroundColor: '#D3D3D3', padding: 20 }}>
-                <Switch 
-                value={comorbidade === 'sim'} 
-                onValueChange={(value)=>{setAtivado(value ? 'sim' : 'nao') }} 
-                />   
-                </View>
+                <Text style={styles.titulo2}>CPF</Text>
+                <TextInput
+                    value={cpf}
+                    style={[styles.caixa_texto, styles.largura_70]}
+                    placeholder='CPF'
+                    onChangeText={(text3) => { 
+                        setCpf(text3);
+                    }}
+                />
+                 <Text style={styles.titulo2}>Matrícula</Text>
+                <TextInput
+                    value={matricula}
+                    style={[styles.caixa_texto, styles.largura_70]}
+                    placeholder='Matricula'
+                    onChangeText={(text4) => { 
+                        setMatricula(text4);
+                    }}
+                />
             </View>
-            <View style={stylesLocal.botoes}>
-                <Pressable
-                    style={stylesLocal.botaoCadastrar}
-                    onPress={() => {cadastrar()}}>
-                    <Text style={[styles.titulo2, , styles.botaoVerde]}>Cadastro</Text>
-                </Pressable>
+            <View style={[stylesLocal.botoes, {marginTop: 40}]}>
                 <Pressable
                     style={stylesLocal.botaoCancelar}
                     onPress={() => props.navigation.goBack()}>
-                    <Text style={[styles.titulo2, styles.botao_vermelho]}>Voltar</Text>
+                    <Text style={[styles.titulo2, stylesLocal.textoCadastCanc]}>Voltar</Text>
                 </Pressable>
-                
+                <Pressable
+                    style={stylesLocal.botaoCadastrar}
+                    onPress={() => {cadastrar()}}>
+                    <Text style={[styles.titulo2, , stylesLocal.textoCadastCanc]}>Cadastro</Text>
+                </Pressable>
                 
             </View>
 
         </View>
     );
 }
-export default TelaCadCliente;
+export default TelaCadFuncionario;
 
 const stylesLocal = StyleSheet.create({
+    tela1: {
+        backgroundColor: '#808080',
+       // flex: 4,
+    },
     tituloRadio: {
         fontSize: 25,
         fontWeight: 'bold',
-        color: 'black',
+        color: 'white',
         textAlign: 'center',
         marginTop: 25,
     },
@@ -133,13 +157,13 @@ const stylesLocal = StyleSheet.create({
         textAlign: 'center',
     },
     fundo: {
-        backgroundColor: '#D3D3D3',
+        backgroundColor: '#808080',
     },
     botoes: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-        backgroundColor: '#D3D3D3',
-        flex: 1,
+        backgroundColor: '#808080',
+      //  flex: 1,
     },
     botaoCancelar: {
         backgroundColor: 'red',

@@ -18,31 +18,40 @@ const TelaPrincipal = (props: PrincipalProps) => {
     return (
         <View style={[styles.tela, styles.centralizar]} >
             <Text style={styles.titulo1}>Tela Principal</Text>
+        
+        <Pressable onPress={() => { props.navigation.navigate('TelaCadCliente')}}>
+            <Text style={[styles.botaoNav, styles.botaoTelaCad]}>Cadastrar Cliente</Text>
+        </Pressable>
 
-            <Pressable onPress={() => { props.navigation.navigate('TelaNotas', { nota1: 10, nota2: 10, nome: 'Jair' }) }}>
-                <Text style={styles.botaoNav}>Tela Notas</Text>
-            </Pressable>
+        
 
-            <Pressable onPress={() => { props.navigation.navigate('TelaLista', { listapessoas: ['Jair'] }) }}>
-                <Text style={styles.botaoNav}>Tela Lista</Text>
-            </Pressable>
+        <Pressable onPress={() => { props.navigation.navigate('TelaCadFuncionario') }}>
+            <Text style={[styles.botaoNav, styles.botaoTelaCad]}>Cadastrar Funcionário</Text>
+        </Pressable>
+        
+        <Pressable onPress={() => { props.navigation.navigate('TelaCadProduto')}}>
+            <Text style={[styles.botaoNav, styles.botaoTelaCad]}>Cadastrar Produto</Text>
+        </Pressable>    
 
-            <Pressable onPress={() => {
-                const text = "Default Alert Text";
-                props.navigation.navigate('TelaCampoDeTexto', { onClick: (text) => Alert.alert(text) })
-            }}>
-                <Text style={styles.botaoNav}>Tela Campo de Texto</Text>
-            </Pressable>
-            <Pressable onPress={() => { props.navigation.navigate('TelaCadCliente') }}>
-                <Text style={styles.botaoNav}>Cadastro Cliente</Text>
-            </Pressable>
+        <Pressable onPress={() => { props.navigation.navigate('TelaCadCategoria') }}>
+            <Text style={[styles.botaoNav, styles.botaoTelaCad]}>Cadastrar Categoria</Text>
+        </Pressable>
 
-            <Pressable onPress={() => { props.navigation.navigate('TelaConsCliente') }}>
-                <Text style={styles.botaoNav}>Consulta Cliente</Text>
-            </Pressable>
-            <Pressable onPress={() => { props.navigation.navigate('TelaMenu') }}>
-                <Text style={styles.botaoNav}>Menu</Text>
-            </Pressable>
+        <Pressable onPress={() => { props.navigation.navigate('TelaConsCliente')}}>
+            <Text style={[styles.botaoNav, styles.botaoTelaCons]}>Consultar Cliente</Text>
+        </Pressable>
+        
+        <Pressable onPress={() => { props.navigation.navigate('TelaConsFuncionario') }}>
+            <Text style={[styles.botaoNav, styles.botaoTelaCons]}>Consultar Funcionário</Text>
+        </Pressable>
+
+        <Pressable onPress={() => { props.navigation.navigate('TelaConsProduto')}}>
+            <Text style={[styles.botaoNav, styles.botaoTelaCons]}>Consultar Produto</Text>
+        </Pressable>    
+
+        <Pressable onPress={() => { props.navigation.navigate('TelaConsCategoria') }}>
+            <Text style={[styles.botaoNav, styles.botaoTelaCons]}>Consultar Categoria</Text>
+        </Pressable>
 
         </View >
     );

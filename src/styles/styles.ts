@@ -4,14 +4,21 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     tela: {
         flex: 1,
-        backgroundColor: '#e6eeff'
+        backgroundColor: '#808080'
     },
     tituloTela: {
         fontSize: 35,
         textAlign: 'center',
         color: 'black'
     },
-
+    botaoTelaCad:{
+        backgroundColor: '#0047ab',
+        fontSize: 20
+    },
+    botaoTelaCons:{
+        backgroundColor: '#9b111e',
+        fontSize: 20
+    },
     margemTop: {
         marginTop: 20
     },
