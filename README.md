@@ -1,22 +1,59 @@
-<h1 align="center">
-<img src="./src/images/capa.png" width="600">
-</h1><br>
+# Cadastro de Produtos (Projeto Escolar - React Native + TypeScript)
 
-Projeto de aplicação React Native modelo para disciplina de programação mobile.
+Este é um **projeto escolar** desenvolvido em **React Native com TypeScript**, com o objetivo de praticar conceitos fundamentais do desenvolvimento mobile, como uso de componentes, hooks (`useState`, `useEffect`) e persistência de dados com `AsyncStorage`.
 
-O projeto já está previamente configurado mas há alguns passos a serem executados:
+O aplicativo permite o **cadastro de produtos** com nome, quantidade e valor unitário, armazenando os dados localmente e exibindo a lista de produtos registrados.
 
-### Passo 1:
-Para baixar os pacotes do projeto execute o comando no terminal aberto na pasta do projeto:
-    `npm install`
+---
 
-### Passo 2:
-Configure o Firebase seguindo o link:
-    [Manual de Configuração Firebase](https://docs.google.com/document/d/1uz7PVRKDwvTCM5DLdZGk_3sLcyuAtZpf-DMVKXspByo/edit?usp=sharing)
-> O Firebase é um serviço de back-end online que disponibiliza disversos recursos para a aplicação, sendo o principal o banco de dados não relacional
+## 📱 Funcionalidades
 
-### Passo 3:
-Para rodar o projeto o comando no terminal:
-    `npm run android`
+- Adicionar produtos com nome, quantidade e valor
+- Cálculo automático do valor total
+- Exibir lista de produtos cadastrados
+- Armazenamento local com `AsyncStorage`
 
+---
 
+## 🧪 Tecnologias Utilizadas
+
+- React Native
+- TypeScript
+- Expo
+- AsyncStorage
+
+---
+
+## 🚀 Como executar
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/jairsrib/projeto_mobile.git
+Acesse o diretório:
+
+bash
+Copiar
+Editar
+cd projeto_mobile
+Instale as dependências:
+
+bash
+Copiar
+Editar
+npm install
+Inicie o projeto com o Expo:
+
+bash
+Copiar
+Editar
+npx expo start
+📁 Estrutura do Projeto
+pgsql
+Copiar
+Editar
+📁 projeto_mobile
+ ┣ 📁 components
+ ┣ 📁 screens
+ ┣ 📄 App.tsx
+ ┣ 📄 tsconfig.json
+ ┗ 📄 package.json
